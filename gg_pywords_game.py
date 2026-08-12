@@ -1,7 +1,7 @@
 from pygame import mixer
 import random
 import time
-random.seed(100)
+import csv
 
 mixer.init()
 good_sound = mixer.Sound('assets/good.wav')
@@ -49,3 +49,7 @@ def scorePrint():
         print(f"불합격했습니다.\n게임 걸린시간 : {elapsed_time:.2f}초, 맞춘 개수 : {score}개")
 
 scorePrint()
+
+with open('word_game_score.csv', mode='a', newline='', encoding='utf8') as f:
+    writer = csv.writer(f)
+    writer.writerow([f'{elapsed_time:.2f}', score])
